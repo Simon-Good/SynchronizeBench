@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ACM", "ACM\ACM.vcxproj", "{7875A73F-7F7A-49B8-B56D-50E22863E49A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "acm1001", "acm1001\acm1001.vcxproj", "{8CB5B2E5-7898-43A6-81E1-4D9B09550459}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "longAdd", "longAdd\longAdd.vcxproj", "{30731F07-0296-4339-827B-022AAB1A6F61}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7875A73F-7F7A-49B8-B56D-50E22863E49A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7875A73F-7F7A-49B8-B56D-50E22863E49A}.Debug|Win32.Build.0 = Debug|Win32
+		{7875A73F-7F7A-49B8-B56D-50E22863E49A}.Release|Win32.ActiveCfg = Release|Win32
+		{7875A73F-7F7A-49B8-B56D-50E22863E49A}.Release|Win32.Build.0 = Release|Win32
+		{8CB5B2E5-7898-43A6-81E1-4D9B09550459}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8CB5B2E5-7898-43A6-81E1-4D9B09550459}.Debug|Win32.Build.0 = Debug|Win32
+		{8CB5B2E5-7898-43A6-81E1-4D9B09550459}.Release|Win32.ActiveCfg = Release|Win32
+		{8CB5B2E5-7898-43A6-81E1-4D9B09550459}.Release|Win32.Build.0 = Release|Win32
+		{30731F07-0296-4339-827B-022AAB1A6F61}.Debug|Win32.ActiveCfg = Debug|Win32
+		{30731F07-0296-4339-827B-022AAB1A6F61}.Debug|Win32.Build.0 = Debug|Win32
+		{30731F07-0296-4339-827B-022AAB1A6F61}.Release|Win32.ActiveCfg = Release|Win32
+		{30731F07-0296-4339-827B-022AAB1A6F61}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
