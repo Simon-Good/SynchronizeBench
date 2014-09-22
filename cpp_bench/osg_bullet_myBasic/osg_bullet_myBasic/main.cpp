@@ -38,6 +38,8 @@
 #include <osgbCollision/RefBulletObject.h>
 #include <osgbDynamics/RigidBodyAnimation.h>
 
+#include "TravelManipulator.h"
+
 osg::AnimationPath * createAnimationPath( const osg::Vec3 & center,
                                           float radius,
                                           double looptime )
@@ -107,9 +109,9 @@ btDynamicsWorld * initPhysics()
     btCollisionDispatcher * dispatcher = new btCollisionDispatcher( collisionConfiguration );
     btConstraintSolver * solver = new btSequentialImpulseConstraintSolver;
 
-    btVector3 worldAabbMin( -10000, -10000, -10000 );
+    btVector3 worldAabbMin( -10000, -10000, -10000 );// 进行aabb算法的范围？
     btVector3 worldAabbMax( 10000, 10000, 10000 );
-    btBroadphaseInterface * inter = new btAxisSweep3( worldAabbMin, worldAabbMax, 1000 );
+    btBroadphaseInterface * inter = new btAxisSweep3( worldAabbMin, worldAabbMax, 1000 );//采用的碰撞检测算法
 
     btDynamicsWorld * dynamicsWorld = new btDiscreteDynamicsWorld( dispatcher, inter, solver, collisionConfiguration );
 
@@ -180,7 +182,7 @@ osg::MatrixTransform * createModel( btDynamicsWorld * dynamicsWorld )
  *  OSG CODE
  */
     osg::ref_ptr< osg::MatrixTransform > node;
-	const std::string fileName( "glider.osg" );
+	const std::string fileName("chilun1.3ds");
     osg::ref_ptr< osg::Node > nodeDB = osgDB::readNodeFile( fileName );
 	if( !nodeDB.valid() )
 	{
@@ -227,7 +229,6 @@ osg::MatrixTransform * createModel( btDynamicsWorld * dynamicsWorld )
     dynamicsWorld->addRigidBody( body );
     
     // kick thing around from time to time.
-    node->setUpdateCallback( new GliderUpdateCallback( body ) );
     
     return( node.release() );
 }
@@ -235,16 +236,10 @@ osg::MatrixTransform * createModel( btDynamicsWorld * dynamicsWorld )
 int main( int argc,
           char * argv[] )
 {
-    osg::ArgumentParser arguments( &argc, argv );
     osgViewer::Viewer viewer;
     viewer.setUpViewInWindow( 10, 30, 1000, 600 );
 
-    osgGA::TrackballManipulator * tb = new osgGA::TrackballManipulator();
-
-    tb->setHomePosition( osg::Vec3( 5, -12, 12 ),
-                        osg::Vec3( -7, 0, -10 ),
-                        osg::Vec3( 0, 0, 1 ) );
-    viewer.setCameraManipulator( tb );
+	viewer.setCameraManipulator(new CTravelManipulator(&viewer))
 
     osg::ref_ptr< osg::Group > root = new osg::Group;
     viewer.setSceneData( root.get() );
@@ -258,31 +253,10 @@ int main( int argc,
     btRigidBody * groundBody;
 
     float thin = .01;
-    ground = createOSGBox( osg::Vec3( 10, 10, thin ) );
+    ground = createOSGBox( osg::Vec3( 800, 800, thin ) );
     root->addChild( ground );//先创建一个osg节点
     groundBody = createBTBox( ground, osg::Vec3( 0, 0, -10 ) );//再根据节点，创建物理性质，刚体
     dynamicsWorld->addRigidBody( groundBody );
-
-    ground = createOSGBox( osg::Vec3( 10, thin, 5 ) );
-    root->addChild( ground );
-    groundBody = createBTBox( ground, osg::Vec3( 0, 10, -5 ) );
-    dynamicsWorld->addRigidBody( groundBody );
-
-    ground = createOSGBox( osg::Vec3( 10, thin, 5 ) );
-    root->addChild( ground );
-    groundBody = createBTBox( ground, osg::Vec3( 0, -10, -5 ) );
-    dynamicsWorld->addRigidBody( groundBody );
-
-    ground = createOSGBox( osg::Vec3( thin, 10, 5 ) );
-    root->addChild( ground );
-    groundBody = createBTBox( ground, osg::Vec3( 10, 0, -5 ) );
-    dynamicsWorld->addRigidBody( groundBody );
-
-    ground = createOSGBox( osg::Vec3( thin, 10, 5 ) );
-    root->addChild( ground );
-    groundBody = createBTBox( ground, osg::Vec3( -10, 0, -5 ) );
-    dynamicsWorld->addRigidBody( groundBody );//分别创建盒子的五个侧壁
-    /* END: Create environment boxes */
 
     /* BEGIN: Create animated box */
     /* OSG Code */
@@ -305,9 +279,6 @@ int main( int argc,
     osgbDynamics::RigidBodyAnimation * rba = new osgbDynamics::RigidBodyAnimation;
     apc->setNestedCallback( rba );
     /* END: Create animated box */
-
-    // bonus geometry
-    root->addChild( osgDB::readNodeFiles( arguments ) );//额外几何模型，如果没有从命令行传入参数，这一行没用
 
     double currSimTime = viewer.getFrameStamp()->getSimulationTime();;
     double prevSimTime = viewer.getFrameStamp()->getSimulationTime();
