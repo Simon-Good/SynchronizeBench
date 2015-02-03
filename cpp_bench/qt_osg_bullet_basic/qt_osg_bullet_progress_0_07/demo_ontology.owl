@@ -1,0 +1,268 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#"
+     xml:base="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology">
+        <rdfs:comment>this is an ontology, used to describe virtual assembly task.</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#connectedTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#connectedTo">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#Component"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#Component"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#hasFeature"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#featureLink"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#featureBelong"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#dependOn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#dependOn">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#Component"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#Component"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#featureBelong -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#featureBelong">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#Component"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#Features"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#featureLink -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#featureLink">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#Features"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#Features"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#hasFeature -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#hasFeature">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#Component"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#Features"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#AxisDirection -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#AxisDirection">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#Features"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#ID -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#ID">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#Component -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#Component"/>
+    
+
+
+    <!-- http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#Environment -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#Environment"/>
+    
+
+
+    <!-- http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#Features -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#Features"/>
+    
+
+
+    <!-- http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#Tools -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#Tools"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#feature_jiangye_shuzhou1_active -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#feature_jiangye_shuzhou1_active">
+        <rdf:type rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#Features"/>
+        <AxisDirection>90.0 0.0 1.0 0.0</AxisDirection>
+        <featureLink rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#feature_jiangye_shuzhou1_passive"/>
+        <featureBelong rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#jiangye"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#feature_jiangye_shuzhou1_passive -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#feature_jiangye_shuzhou1_passive">
+        <rdf:type rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#Features"/>
+        <AxisDirection>90.0 0.0 1.0 0.0</AxisDirection>
+        <featureLink rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#feature_jiangye_shuzhou1_active"/>
+        <featureBelong rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#shuzhou"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#feature_jiangye_shuzhou2_active -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#feature_jiangye_shuzhou2_active">
+        <rdf:type rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#Features"/>
+        <AxisDirection>90.0 0.0 1.0 0.0</AxisDirection>
+        <featureLink rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#feature_jiangye_shuzhou2_passive"/>
+        <featureBelong rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#jiangye"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#feature_jiangye_shuzhou2_passive -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#feature_jiangye_shuzhou2_passive">
+        <rdf:type rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#Features"/>
+        <AxisDirection>90.0 0.0 1.0 0.0</AxisDirection>
+        <featureLink rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#feature_jiangye_shuzhou2_active"/>
+        <featureBelong rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#shuzhou"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#feature_zhuanluntike_shuzhou_active -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#feature_zhuanluntike_shuzhou_active">
+        <rdf:type rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#Features"/>
+        <AxisDirection>90.0 0.0 1.0 0.0</AxisDirection>
+        <featureLink rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#feature_zhuanluntike_shuzhou_passive"/>
+        <featureBelong rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#shuzhou"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#feature_zhuanluntike_shuzhou_passive -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#feature_zhuanluntike_shuzhou_passive">
+        <rdf:type rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#Features"/>
+        <AxisDirection>90.0 1.0 0.0 0.0</AxisDirection>
+        <featureLink rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#feature_zhuanluntike_shuzhou_active"/>
+        <featureBelong rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#zhuanluntike"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#jiangye -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#jiangye">
+        <rdf:type rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#Component"/>
+        <ID rdf:datatype="&xsd;string">003</ID>
+        <hasFeature rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#feature_jiangye_shuzhou1_active"/>
+        <hasFeature rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#feature_jiangye_shuzhou2_active"/>
+        <connectedTo rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#shuzhou"/>
+        <dependOn rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#shuzhou"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#shuzhou -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#shuzhou">
+        <rdf:type rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#Component"/>
+        <ID rdf:datatype="&xsd;string">002</ID>
+        <hasFeature rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#feature_jiangye_shuzhou1_passive"/>
+        <hasFeature rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#feature_jiangye_shuzhou2_passive"/>
+        <hasFeature rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#feature_zhuanluntike_shuzhou_active"/>
+        <connectedTo rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#jiangye"/>
+        <connectedTo rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#zhuanluntike"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#zhuanluntike -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#zhuanluntike">
+        <rdf:type rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#Component"/>
+        <ID rdf:datatype="&xsd;string">001</ID>
+        <hasFeature rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#feature_zhuanluntike_shuzhou_passive"/>
+        <connectedTo rdf:resource="http://www.semanticweb.org/songchen/ontologies/2014/11/demo_ontology#shuzhou"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
+
